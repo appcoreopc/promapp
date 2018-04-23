@@ -13,11 +13,10 @@ class App extends React.Component {
 	}
 	
 	componentDidMount() {
-
-	//	let instance = this; 
-	//	request.get(GetTeamDataUrl, function(err, resp) {		 
-	//	instance.createTeamItem(resp);		   
-	//}); 
+		let instance = this; 
+		request.get(GetTeamDataUrl, function(err, resp) {		 
+	    instance.createTeamItem(resp);		   
+	    }); 
 }
 
 createTeamItem(resp) {
@@ -25,9 +24,9 @@ createTeamItem(resp) {
 	let items = [];     	
 	if (resp) {
 		// mount ui depending on value returned 
-	   //resp.array.forEach(element => {		
-	   //	items.push(<option value="{element.value}">{element.text}</option>);   		
-	   //});
+	   resp.array.forEach(element => {		
+	   	items.push(<option value="{element.value}">{element.text}</option>);   		
+	   });
 	   
 	}
 	else 
