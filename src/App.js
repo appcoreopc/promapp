@@ -8,12 +8,12 @@ class App extends React.Component {
 
 	constructor(props) {		
 		super(props);
-		this.state = { username : "", password : "", team : "", rememberMe : false};		
-
+		this.state = { username : "", password : "", team : "", rememberMe : false};	
 		this.doLogin = this.doLogin.bind(this);
 	}
 	
 	componentDidMount() {
+
 	//	let instance = this; 
 	//	request.get(GetTeamDataUrl, function(err, resp) {		 
 	//	instance.createTeamItem(resp);		   
@@ -22,11 +22,9 @@ class App extends React.Component {
 
 createTeamItem(resp) {
 
-	let items = [];     
-	
+	let items = [];     	
 	if (resp) {
-
-	   // mount ui depending on value returned 
+		// mount ui depending on value returned 
 	   //resp.array.forEach(element => {		
 	   //	items.push(<option value="{element.value}">{element.text}</option>);   		
 	   //});
@@ -67,28 +65,21 @@ doLogin = () => {
 	if (this.state.team && this.state.team.length == 0){
 		this.setState({errMessage : TeamEmptyMessage });
 		return;
-	}
-	
-	console.log(this.state);
+	}	
 
-	return;
-
-	var instance = this;
-	
+	var instance = this;		
 	request.post(LoginUrl)
 	.send({ username: this.state.username, password: this.state.password, team : this.state.team, rememberMe : this.state.rememberMe }) 
 	.set('accept', 'json')
 	.end((err, res) => {
-		
+
 		if (err) { 
 			instance.setState({errMessage : ErrorSigningInMessage});
-		}
-		
+		}		
 	});
 }
 
 handleRememberMe = (event) => {
-
 	if (event.target.checked)
 	this.setState({rememberMe : event.target.checked});
 }
@@ -133,7 +124,7 @@ render() {
 		
 		</div>
 	);
-}
+  }
 }
 
 export default App;
